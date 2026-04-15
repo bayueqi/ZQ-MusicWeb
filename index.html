@@ -348,7 +348,7 @@
       border: none;
       background: transparent;
       box-shadow: none;
-      padding-left: 0;
+      padding-left: 8px;
     }
     .search-row .btn {
       margin-left: 4px;
@@ -676,6 +676,10 @@
       width:40px;
       height:40px;
       font-size:18px;
+      text-align:center;
+      display:flex;
+      align-items:center;
+      justify-content:center;
     }
     .control-secondary {
       display:flex;
@@ -1221,7 +1225,7 @@
           <img src="cat.png" alt="cay" class="cay-img">
         </div>
         <div class="title-text">
-          <h1 data-i18n="appTitle">八月琪的音乐站</h1>
+          <h1 data-i18n="appTitle">ZQ-MusicWeb</h1>
         </div>
       </div>
       <div class="header-controls">
@@ -1285,7 +1289,6 @@
               <option value="20">20</option>
               <option value="30">30</option>
             </select>
-            <span data-i18n="perSourceCountTail">首结果</span>
             <button id="load-more-btn" class="btn btn-secondary ripple-target" data-i18n="loadMore">
               加载更多
             </button>
@@ -1293,7 +1296,7 @@
 
           <div class="search-stats">
             <span id="search-status" data-i18n="searchStatusIdle">尚未搜索，试试输入“林俊杰”？</span>
-            <span id="search-count">0</span>
+            <span>共 <span id="search-count">0</span> 首结果</span>
           </div>
 
           <div id="search-mini-list" class="search-results-mini"></div>
@@ -1442,7 +1445,7 @@
         <button id="shortcut-close" class="modal-close-btn">×</button>
       </div>
       <p class="modal-desc" data-i18n="shortcutPanelDesc">
-        使用键盘可以更加方便地控制八月琪的音乐站：
+        使用键盘可以更加方便地控制ZQ-MusicWeb：
       </p>
       <div class="shortcut-grid">
         <div class="shortcut-card">
@@ -1490,10 +1493,10 @@
   (function(){
     const translations = {
       zh: {
-        appTitle:"八月琪的音乐站",
+        appTitle:"ZQ-MusicWeb",
         shortcutHint:"快捷键：Space 播放/暂停 · ←/→ 跳转 · ↑/↓ 音量 · N/P 切歌 · F 收藏 · L 切换歌词效果",
         shortcutPanelTitle:"快捷键说明",
-        shortcutPanelDesc:"使用键盘可以更加方便地控制八月琪的音乐站：",
+        shortcutPanelDesc:"使用键盘可以更加方便地控制ZQ-MusicWeb：",
         shortcutPlayPause:"播放 / 暂停",
         shortcutSeek:"快退 / 快进 5 秒",
         shortcutVolume:"音量加 / 减",
@@ -1557,10 +1560,10 @@
         modalCancel:"取消"
       },
       en: {
-        appTitle:"Bayueqi Music Station",
+        appTitle:"ZQ-MusicWeb",
         shortcutHint:"Shortcuts: Space Play/Pause · ←/→ Seek · ↑/↓ Volume · N/P Track · F Fav · L Lyrics FX",
         shortcutPanelTitle:"Keyboard Shortcuts",
-        shortcutPanelDesc:"Control Bayueqi Music Station more easily with your keyboard:",
+        shortcutPanelDesc:"Control ZQ-MusicWeb more easily with your keyboard:",
         shortcutPlayPause:"Play / Pause",
         shortcutSeek:"Seek backward / forward 5s",
         shortcutVolume:"Volume up / down",
