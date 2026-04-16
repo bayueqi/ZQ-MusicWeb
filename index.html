@@ -1199,10 +1199,19 @@
         flex-direction:column;
         align-items:flex-start;
         gap:6px;
+        padding: 12px;
+        min-height: auto;
       }
       .header-controls{
         width:100%;
         justify-content:space-between;
+      }
+      .shortcut-hint{
+        display: none;
+      }
+      .cay-box{
+        width: 56px;
+        height: 56px;
       }
       .layout{
         grid-template-columns:1fr;
@@ -1211,6 +1220,106 @@
           "player"
           "search"
           "playlist";
+      }
+      .app{
+        margin: 8px;
+        height: calc(100vh - 16px);
+        padding: 8px;
+        border-radius: 16px;
+      }
+      .player-top{
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        min-height: auto;
+        gap: 12px;
+      }
+      .cover-wrapper{
+        width: 140px;
+        height: 140px;
+      }
+      .track-text{
+        max-width: 100%;
+      }
+      .track-title{
+        font-size: 16px;
+      }
+      .track-artist{
+        font-size: 11px;
+      }
+      .track-title-row{
+        flex-direction: column;
+        align-items: center;
+      }
+      .player-actions{
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .lyrics-line{
+        font-size: 15px;
+      }
+      .lyrics-line.active{
+        transform: scale(1.08);
+      }
+      .search-mini-item,
+      .track-item{
+        padding: 10px 12px;
+      }
+      .btn,
+      .btn-icon{
+        min-height: 40px;
+        min-width: 40px;
+      }
+      .control-main .play-btn{
+        width: 48px;
+        height: 48px;
+        font-size: 20px;
+      }
+      .progress-bar-wrapper{
+        height: 8px;
+      }
+      .progress-handle{
+        width: 14px;
+        height: 14px;
+      }
+      .input{
+        padding: 10px 12px;
+        font-size: 14px;
+      }
+      .search-row{
+        padding: 4px 4px 4px 12px;
+      }
+      .source-chip{
+        padding: 6px 10px;
+      }
+      .panel{
+        padding: 12px;
+      }
+      .panel-header{
+        margin-bottom: 10px;
+      }
+      .lyrics-container{
+        padding: 12px 12px 10px;
+      }
+    }
+    @media (max-width: 480px){
+      .title-text h1{
+        font-size: 16px;
+      }
+      .cover-wrapper{
+        width: 120px;
+        height: 120px;
+      }
+      .track-title{
+        font-size: 15px;
+      }
+      .playlist-tabs{
+        font-size: 10px;
+      }
+      .playlist-tab{
+        padding: 4px 8px;
       }
     }
   </style>
