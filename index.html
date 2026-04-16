@@ -2525,6 +2525,20 @@
       else dom.audio.play().catch(e=>console.error(e));
     }
 
+    function saveToLocalStorage(){
+      try{
+        localStorage.setItem('cay-music-favorites', JSON.stringify(state.favorites));
+        localStorage.setItem('cay-music-playlists', JSON.stringify(state.playlists));
+      }catch(e){console.error(e);}
+    }
+    function loadFromLocalStorage(){
+      try{
+        const fav=localStorage.getItem('cay-music-favorites');
+        const pls=localStorage.getItem('cay-music-playlists');
+        if(fav)state.favorites=JSON.parse(fav);
+        if(pls)state.playlists=JSON.parse(pls);
+      }catch(e){console.error(e);}
+    }
     function toggleFavoriteCurrent(){
       const tr=state.currentTrack; if(!tr)return;
       const i=state.favorites.findIndex(x=>x.uid===tr.uid);
@@ -2532,6 +2546,7 @@
       else{state.favorites.push(tr);showToast(t('toastAddedFavorite'));}
       updateMainFavButton();
       renderPlaylistList();
+      saveToLocalStorage();
     }
 
     function handleDownloadCurrent(){
@@ -2554,6 +2569,7 @@
       pl.tracks.push(track);
       renderPlaylistList();
       showToast(t('toastAddedToPlaylist'));
+      saveToLocalStorage();
     }
 
     // ===================== 搜索结果 / 播放列表渲染 =====================
@@ -2613,13 +2629,18 @@
         dom.playlistSelectRow.style.display='none';
       }else{
         dom.playlistSelectRow.style.display='flex';
+        dom.playlistSelect.innerHTML='';
         if(!state.playlists.length){
-          dom.playlistSelect.innerHTML='';
           const opt=document.createElement('option');
           opt.value=''; opt.textContent=state.language==='zh'?'暂无歌单':'No playlist';
           dom.playlistSelect.appendChild(opt);
           return;
         }
+        state.playlists.forEach(pl=>{
+          const opt=document.createElement('option');
+          opt.value=pl.id; opt.textContent=pl.name;
+          dom.playlistSelect.appendChild(opt);
+        });
         if(!dom.playlistSelect.value)dom.playlistSelect.value=state.playlists[0].id;
         const pl=state.playlists.find(p=>p.id===dom.playlistSelect.value)||state.playlists[0];
         dom.playlistSelect.value=pl.id;
@@ -2681,6 +2702,7 @@
           else{state.favorites.push(track);showToast(t('toastAddedFavorite'));}
           renderPlaylistList();
           updateMainFavButton();
+          saveToLocalStorage();
         });
         act.appendChild(pBtn);
         act.appendChild(fBtn);
@@ -2718,6 +2740,7 @@
       closePlaylistModal();
       renderPlaylistList();
       showToast(t('toastPlaylistCreated'));
+      saveToLocalStorage();
     }
 
     // ===================== 搜索加载更多 =====================
@@ -3078,6 +3101,7 @@
     function init(){
       setupDOM();
       try{const lg=localStorage.getItem('cay-music-lang'); if(lg)state.language=lg;}catch(e){}
+      loadFromLocalStorage();
       setupParticles();
       setupRipple();
       setupEvents();
